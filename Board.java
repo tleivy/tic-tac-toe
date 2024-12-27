@@ -24,6 +24,10 @@ public class Board {
         return this.winner;
     }
 
+    public void resetBoard() {
+        nullifyGame();
+    }
+    
     public void processUserMove(char row, int col, char sign)
             throws GameExceptions.IllegalMoveException, GameExceptions.IllegalSignException,
             GameExceptions.CellAlreadyUsed, GameExceptions.GarbageValueInCell {
@@ -42,11 +46,7 @@ public class Board {
     public boolean checkIfSomeoneWon() {
         return isRowWinner() || isColWinner() || isDiagonalWinner();
     }
-
-    public void resetBoard() {
-        nullifyGame();
-    }
-
+    
     private void nullifyGame() {
         this.matrix = new char[size][size];
         for (int i = 0; i < size; i++) {
@@ -64,7 +64,7 @@ public class Board {
         } else if (col < 1 || col > 3) {
             throw new GameExceptions.IllegalMoveException(Strings.colOutOfBounds);
         } else if (sign != 'X' && sign != 'O') {
-            throw new GameExceptions.IllegalSignException(Strings.colOutOfBounds);
+            throw new GameExceptions.IllegalSignException(Strings.illegalSign);
         }
         return true;
     }
@@ -102,10 +102,18 @@ public class Board {
     }
 
     private boolean isDiagonalWinner() {
+        return isMainDiagonalWinner() || isOtherDiagonalWinner();
+    }
+
+    private boolean isMainDiagonalWinner() {
         if (this.matrix[0][0] == this.matrix[1][1] && this.matrix[0][0] == this.matrix[2][2]) {
             this.winner = this.matrix[0][0];
             return true;
         }
+        return false;
+    }
+
+    private boolean isOtherDiagonalWinner() {
         if (this.matrix[2][0] == this.matrix[1][1] && this.matrix[2][0] == this.matrix[2][0]) {
             this.winner = this.matrix[0][0];
             return true;
