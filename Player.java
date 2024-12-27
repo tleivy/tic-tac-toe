@@ -1,9 +1,11 @@
 public class Player {
     private String name;
+    private char sign;
     private int score;
 
-    public Player(String name) {
+    public Player(String name, char sign) {
         this.name = name;
+        this.sign = sign;
         this.score = 0;
     }
 
@@ -13,6 +15,10 @@ public class Player {
 
     public int getScore() {
         return this.score;
+    }
+    
+    public char getSign() {
+        return this.sign;
     }
 
     public void incScore() {
