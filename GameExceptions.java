@@ -16,4 +16,10 @@ public class GameExceptions {
             super(message);
         }
     }
+
+    public static class GarbageValueInCell extends Exception {
+        public GarbageValueInCell(String message) {
+            super(message);
+        }
+    }
 }
