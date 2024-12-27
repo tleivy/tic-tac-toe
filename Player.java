@@ -11,7 +11,15 @@ public class Player {
         return this.name;
     }
 
+    public int getScore() {
+        return this.score;
+    }
+
     public void incScore() {
         this.score++;
+    }
+
+    public void nullifyScore() {
+        this.score = 0;
     }
 }
