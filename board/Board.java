@@ -5,7 +5,6 @@ import java.util.HashMap;
 import utils.Strings;
 import utils.GameExceptions;
 
-
 public class Board {
     private final int size = 3;
     private final int asciiOfA = 65;
@@ -54,6 +53,18 @@ public class Board {
         return isRowWinner() || isColWinner() || isDiagonalWinner();
     }
 
+    public boolean checkIfDraw() {
+        if (checkIfSomeoneWon()) return false;
+        else {
+            for (int i = 0; i < this.size; i++) {
+                for (int j = 0; j < this.size; j++) {
+                    if (this.matrix[i][j] == ' ') return false;
+                }
+            }
+        }
+        return true;
+    }
+
     private void nullifyGame() {
         this.matrix = new char[size][size];
         for (int i = 0; i < size; i++) {
@@ -90,7 +101,8 @@ public class Board {
 
     private boolean isRowWinner() {
         for (int i = 0; i < this.size; i++) {
-            if (this.matrix[i][0] == this.matrix[i][1] && this.matrix[i][0] == this.matrix[i][2]) {
+            if (this.matrix[i][0] == this.matrix[i][1] && this.matrix[i][0] == this.matrix[i][2]
+                    && this.matrix[i][0] != ' ') {
                 this.winner = this.matrix[i][0];
                 return true;
             }
@@ -100,7 +112,8 @@ public class Board {
 
     private boolean isColWinner() {
         for (int j = 0; j < this.size; j++) {
-            if (this.matrix[0][j] == this.matrix[1][j] && this.matrix[0][j] == this.matrix[2][j]) {
+            if (this.matrix[0][j] == this.matrix[1][j] && this.matrix[0][j] == this.matrix[2][j]
+                    && this.matrix[0][j] != ' ') {
                 this.winner = this.matrix[0][j];
                 return true;
             }
@@ -113,7 +126,8 @@ public class Board {
     }
 
     private boolean isMainDiagonalWinner() {
-        if (this.matrix[0][0] == this.matrix[1][1] && this.matrix[0][0] == this.matrix[2][2]) {
+        if (this.matrix[0][0] == this.matrix[1][1] && this.matrix[0][0] == this.matrix[2][2]
+                && this.matrix[0][0] != ' ') {
             this.winner = this.matrix[0][0];
             return true;
         }
@@ -121,7 +135,8 @@ public class Board {
     }
 
     private boolean isOtherDiagonalWinner() {
-        if (this.matrix[2][0] == this.matrix[1][1] && this.matrix[2][0] == this.matrix[2][0]) {
+        if (this.matrix[2][0] == this.matrix[1][1] && this.matrix[2][0] == this.matrix[2][0]
+                && this.matrix[2][0] != ' ') {
             this.winner = this.matrix[0][0];
             return true;
         }
