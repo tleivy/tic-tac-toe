@@ -38,7 +38,7 @@ public class SingleGame {
     public void processUserMove() {
         boolean validMove = false;
         while (!validMove) {
-            UserMove userMove = inputManager.readLine(turn.getName(), turn.getSign());
+            UserMove userMove = inputManager.readMoveLine(turn.getName(), turn.getSign());
             try {
                 this.board.processUserMove(userMove.getRow(), userMove.getCol(), userMove.getSign());
                 validMove = true;
@@ -60,6 +60,8 @@ public class SingleGame {
             throw new GameExceptions.NoWinnerYet("");  // TODO: add exception string
         }
         this.gameState = GameState.FINISHED;
-        return board.getWinner();
+        char winnerSign = board.getWinner();
+        Player winner = (this.player1.getSign() == winnerSign) ? player1 : player2;
+        return winner;
     }
 }
