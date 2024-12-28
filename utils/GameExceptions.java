@@ -36,4 +36,10 @@ public class GameExceptions {
             super(message);
         }
     }
+
+    public static class EmptyNameException extends Exception {
+        public EmptyNameException(String message) {
+            super(message);
+        }
+    }
 }
