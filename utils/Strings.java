@@ -9,4 +9,6 @@ public class Strings {
     public static final String garbageValueInCell = "Grabage value in cell.";
     public static final String enterYouMoveAgain = "Please enter your move again.";
     public static final String invalidContinueGameInput = "Invalid input - must enter y or n.";
+    public static final String invalidMoveFormat = "Invalid input. Must be of format a1 or A1";
+    public static final String YouMustEnterName = "You must enter a player name.";
 }
