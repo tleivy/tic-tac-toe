@@ -1,5 +1,8 @@
+/**
+ * The CLIBoardPresenter outputs the board to the terminal.
+ * This is a 3x3 board.
+ */
 public class CLIBoardPresenter implements BoardPresenter {
-
     @Override
     public void drawBoard(char[][] board) {
         System.out.println();

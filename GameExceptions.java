@@ -22,4 +22,10 @@ public class GameExceptions {
             super(message);
         }
     }
+
+    public static class NoWinnerYet extends Exception {
+        public NoWinnerYet(String message) {
+            super(message);
+        }
+    }
 }
