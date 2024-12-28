@@ -10,7 +10,7 @@ public class Board {
         }
     };
     private char[][] matrix;
-    private Player winner;
+    private char winner;
 
     public Board() {
         nullifyGame();
@@ -20,7 +20,7 @@ public class Board {
         return this.matrix;
     }
 
-    public Player getWinner() {
+    public char getWinner() {
         return this.winner;
     }
 
