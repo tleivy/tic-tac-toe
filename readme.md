@@ -21,7 +21,7 @@ To run this game, you need:
 
 1. Clone this repository to your local machine:
 ```bash
-git clone https://github.com/tleivy/tictactoe.git
+git clone https://github.com/tleivy/tic-tac-toe.git
 cd tictactoe
 ```
 
