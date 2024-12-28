@@ -25,20 +25,41 @@ public class SingleGame {
         System.out.println("Player 1 - " + player1Name + " got assigned with:" + p1Sign);
         System.out.println("Player 2 - " + player2Name + " got assigned with:" + p2Sign);
 
-        if (Math.random() < 0.5) {
-            turn = player1;
-            System.out.println("Hey " + player1Name + "! You start. Remember, you are " + player1.getSign());
-        } else {
-            turn = player2;
-            System.out.println("Hey " + player2Name + "! You start. Remember, you are " + player2.getSign());
-        }
-        
+        this.turn = (Math.random() < 0.5) ? player1 : player2;
+        System.out.println("Hey " + this.turn.getName() + "! You start. Remember, you are " + this.turn.getSign());
+    
         this.gameState = GameState.ACTIVE;
+    }
+    
+    public GameState getGameState() {
+        return this.gameState;
     }
 
     public void processUserMove() {
-        UserMove userMove = inputManager.readLine(turn.getName(), turn.getSign());
-        // TODO: continue process logic
-        // Validate it, etc
+        boolean validMove = false;
+        while (!validMove) {
+            UserMove userMove = inputManager.readLine(turn.getName(), turn.getSign());
+            try {
+                this.board.processUserMove(userMove.getRow(), userMove.getCol(), userMove.getSign());
+                validMove = true;
+            } catch (GameExceptions.IllegalMoveException | GameExceptions.IllegalSignException
+                    | GameExceptions.CellAlreadyUsed | GameExceptions.GarbageValueInCell e) {
+                System.out.println("Error: " + e.getMessage());
+                System.out.println(Strings.enterYouMoveAgain);
+            }
+        }
+        this.turn = (this.turn == player1) ? player2 : player1;
+    }
+
+    public boolean hasSomeoneWon() {
+        return this.board.checkIfSomeoneWon();
+    }
+
+    public Player getWinner() throws GameExceptions.NoWinnerYet {
+        if (!board.checkIfSomeoneWon()) {
+            throw new GameExceptions.NoWinnerYet("");  // TODO: add exception string
+        }
+        this.gameState = GameState.FINISHED;
+        return board.getWinner();
     }
 }
