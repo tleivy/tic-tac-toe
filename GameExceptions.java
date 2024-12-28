@@ -28,4 +28,10 @@ public class GameExceptions {
             super(message);
         }
     }
+
+    public static class ContinueGameException extends Exception {
+        public ContinueGameException(String message) {
+            super(message);
+        }
+    }
 }
