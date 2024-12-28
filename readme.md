@@ -49,7 +49,7 @@ C | | | |
   -------
 ```
 
-3. Players take turns entering a number (1-9) to place their mark (X or O) in the corresponding position.
+3. Players take turns entering a cell coordinates (for example a1) to place their mark (X or O) in the corresponding position.
 4. The game ends when either:
    - A player gets three marks in a row (horizontally, vertically, or diagonally)
    - The board is full (draw)
@@ -66,10 +66,6 @@ Feel free to fork this project and submit pull requests with improvements. Some 
 - Add computer player with AI
 - Implement difficulty levels
 - Create a GUI version
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Author
 
