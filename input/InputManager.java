@@ -1,4 +1,8 @@
+package input;
 import java.util.Scanner;
+
+import utils.GameExceptions;
+import utils.Strings;
 
 public class InputManager {
     private static InputManager instance;

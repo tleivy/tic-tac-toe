@@ -1,3 +1,5 @@
+package utils;
+
 public class GameExceptions {
     public static class IllegalMoveException extends Exception {
         public IllegalMoveException(String message) {

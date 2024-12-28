@@ -1,3 +1,5 @@
+package board;
+
 /**
  * The CLIBoardPresenter outputs the board to the terminal.
  * This is a 3x3 board.
@@ -44,7 +46,7 @@ public class CLIBoardPresenter implements BoardPresenter {
     }
 
     private boolean isRowNumCoordinate(int i, int j) {
-        return j == 0 && i > 2 && i % 2 == 1; 
+        return j == 0 && i > 2 && i % 2 == 1;
     }
 
     private boolean isColNumCoordinate(int i, int j) {
@@ -77,6 +79,7 @@ public class CLIBoardPresenter implements BoardPresenter {
 
     /**
      * This method converts the virtual board coordiantes to real matrix coordinates
+     * 
      * @param row
      * @param col
      * @return An array of 2 elements - row in cell 0 and column in cell 1
@@ -161,7 +164,7 @@ public class CLIBoardPresenter implements BoardPresenter {
         }
         board[0][0] = 'X';
         board[1][1] = 'O';
-        
+
         CLIBoardPresenter presenter = new CLIBoardPresenter();
         presenter.drawBoard(board);
     }

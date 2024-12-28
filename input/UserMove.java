@@ -1,3 +1,4 @@
+package input;
 public class UserMove {
     private char row;
     private int col;

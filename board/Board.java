@@ -1,4 +1,10 @@
+package board;
+
 import java.util.HashMap;
+
+import utils.Strings;
+import utils.GameExceptions;
+
 
 public class Board {
     private final int size = 3;
@@ -27,7 +33,7 @@ public class Board {
     public void resetBoard() {
         nullifyGame();
     }
-    
+
     public void processUserMove(char row, int col, char sign)
             throws GameExceptions.IllegalMoveException, GameExceptions.IllegalSignException,
             GameExceptions.CellAlreadyUsed, GameExceptions.GarbageValueInCell {
@@ -41,12 +47,13 @@ public class Board {
     /**
      * This method checks if there's a triple of same sign in the board.
      * As a side effect it updates the winner, if there is one.
+     * 
      * @return true if there's a winner, false otherwise.
      */
     public boolean checkIfSomeoneWon() {
         return isRowWinner() || isColWinner() || isDiagonalWinner();
     }
-    
+
     private void nullifyGame() {
         this.matrix = new char[size][size];
         for (int i = 0; i < size; i++) {

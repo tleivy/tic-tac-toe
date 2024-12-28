@@ -1,5 +1,8 @@
 import java.util.LinkedList;
 
+import input.InputManager;
+import utils.GameExceptions;
+
 public class TicTacToe {
     private LinkedList<SingleGame> pastGames;
     private String p1Name;
@@ -45,6 +48,7 @@ public class TicTacToe {
                 }
             }
         }
+        System.out.println("\nThanks for playing!\n");
     }
 
     private void printSpaceLine() { // TODO: move to utils
