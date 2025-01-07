@@ -64,7 +64,7 @@ public class SingleGame {
         this.turn = (this.turn == player1) ? player2 : player1;
     }
 
-    public boolean hasSomeoneWon() {
+    public boolean isWinner() {
         return this.board.checkIfSomeoneWon();
     }
 

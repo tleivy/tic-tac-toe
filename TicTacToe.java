@@ -13,7 +13,7 @@ public class TicTacToe {
     private int p1Wins;
     private int p2Wins;
     private InputManager inputManager;
-    private SingleGame currGame;
+    private SingleGame currentGame;
     private BoardPresenter boardPresenter;
 
     public TicTacToe() {
@@ -41,17 +41,17 @@ public class TicTacToe {
     public void start() {
         boolean stopGame = false;
         while (!stopGame) {
-            this.currGame = new SingleGame(p1Name, p2Name);
-            this.boardPresenter.drawBoard(this.currGame.getBoard().getMatrix());
+            this.currentGame = new SingleGame(p1Name, p2Name);
+            this.boardPresenter.drawBoard(this.currentGame.getBoard().getMatrix());
 
-            while (!currGame.hasSomeoneWon() && !currGame.isDraw()) {
-                currGame.processUserMove();
-                this.boardPresenter.drawBoard(this.currGame.getBoard().getMatrix());
+            while (!currentGame.isWinner() && !currentGame.isDraw()) {
+                currentGame.processUserMove();
+                this.boardPresenter.drawBoard(this.currentGame.getBoard().getMatrix());
             }
             Outputs.printSpaceLine();
-            if (currGame.hasSomeoneWon()) {
+            if (currentGame.isWinner()) {
                 try {
-                    String winnerName = currGame.getWinner().getName();
+                    String winnerName = currentGame.getWinner().getName();
                     System.out.println("*** Congratulations, " + winnerName + "! You won!");
                     if (winnerName == p1Name)
                         p1Wins++;
@@ -63,7 +63,7 @@ public class TicTacToe {
             } else System.out.println("*** This game is a draw.");
             Outputs.printSpaceLine();
 
-            this.pastGames.addLast(this.currGame);
+            this.pastGames.addLast(this.currentGame);
 
             boolean validInput = false;
             while (!validInput) {
