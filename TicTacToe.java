@@ -93,9 +93,4 @@ public class TicTacToe {
     public int getP2Wins() {
         return this.p2Wins;
     }
-
-    public static void main(String[] args) {
-        TicTacToe match = new TicTacToe();
-        match.start();
-    }
 }
