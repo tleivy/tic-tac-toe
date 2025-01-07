@@ -13,20 +13,20 @@ public class GameExceptions {
         }
     }
 
-    public static class CellAlreadyUsed extends Exception {
-        public CellAlreadyUsed(String message) {
+    public static class CellAlreadyUsedException extends Exception {
+        public CellAlreadyUsedException(String message) {
             super(message);
         }
     }
 
-    public static class GarbageValueInCell extends Exception {
-        public GarbageValueInCell(String message) {
+    public static class GarbageValueInCellException extends Exception {
+        public GarbageValueInCellException(String message) {
             super(message);
         }
     }
 
-    public static class NoWinnerYet extends Exception {
-        public NoWinnerYet(String message) {
+    public static class NoWinnerYetException extends Exception {
+        public NoWinnerYetException(String message) {
             super(message);
         }
     }

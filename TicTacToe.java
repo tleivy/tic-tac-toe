@@ -57,7 +57,7 @@ public class TicTacToe {
                         p1Wins++;
                     else
                         p2Wins++;
-                } catch (GameExceptions.NoWinnerYet e) {
+                } catch (GameExceptions.NoWinnerYetException e) {
                     System.out.println("Error: " + e.getMessage());
                 }
             } else System.out.println("*** This game is a draw.");

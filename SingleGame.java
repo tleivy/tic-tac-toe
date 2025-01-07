@@ -55,7 +55,7 @@ public class SingleGame {
                 this.board.processUserMove(userMove.getRow(), userMove.getCol(), userMove.getSign());
                 validMove = true;
             } catch (GameExceptions.IllegalMoveException | GameExceptions.IllegalSignException
-                    | GameExceptions.CellAlreadyUsed | GameExceptions.GarbageValueInCell e) {
+                    | GameExceptions.CellAlreadyUsedException | GameExceptions.GarbageValueInCellException e) {
                 System.out.println("Error: " + e.getMessage());
                 System.out.println(Strings.enterYouMoveAgain);
                 Outputs.printSpaceLine();
@@ -72,9 +72,9 @@ public class SingleGame {
         return this.board.checkIfDraw();
     }
 
-    public Player getWinner() throws GameExceptions.NoWinnerYet {
+    public Player getWinner() throws GameExceptions.NoWinnerYetException {
         if (!board.checkIfSomeoneWon()) {
-            throw new GameExceptions.NoWinnerYet("");  // TODO: add exception string
+            throw new GameExceptions.NoWinnerYetException("");  // TODO: add exception string
         }
         this.gameState = GameState.FINISHED;
         char winnerSign = board.getWinner();

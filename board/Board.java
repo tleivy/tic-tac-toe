@@ -35,7 +35,7 @@ public class Board {
 
     public void processUserMove(char row, int col, char sign)
             throws GameExceptions.IllegalMoveException, GameExceptions.IllegalSignException,
-            GameExceptions.CellAlreadyUsed, GameExceptions.GarbageValueInCell {
+            GameExceptions.CellAlreadyUsedException, GameExceptions.GarbageValueInCellException {
         int rowValue = (int) row - asciiOfA;
         int colValue = col - 1;
         if (validateUserInputInBounds(row, col, sign) && validateCellIsEmpty(rowValue, colValue, sign)) {
@@ -88,13 +88,13 @@ public class Board {
     }
 
     private boolean validateCellIsEmpty(int row, int col, char sign)
-            throws GameExceptions.CellAlreadyUsed, GameExceptions.GarbageValueInCell {
+            throws GameExceptions.CellAlreadyUsedException, GameExceptions.GarbageValueInCellException {
         if (this.matrix[row][col] == sign) {
-            throw new GameExceptions.CellAlreadyUsed(Strings.userCellAlreadyVisted);
+            throw new GameExceptions.CellAlreadyUsedException(Strings.userCellAlreadyVisted);
         } else if (this.matrix[row][col] == opponentSign.get(sign)) {
-            throw new GameExceptions.CellAlreadyUsed(Strings.opponentCellAlreadyVisted);
+            throw new GameExceptions.CellAlreadyUsedException(Strings.opponentCellAlreadyVisted);
         } else if (this.matrix[row][col] != ' ') {
-            throw new GameExceptions.GarbageValueInCell(Strings.garbageValueInCell);
+            throw new GameExceptions.GarbageValueInCellException(Strings.garbageValueInCell);
         }
         return true;
     }
